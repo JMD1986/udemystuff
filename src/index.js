@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { BrowserRouter, } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 
 import App from './components/app';
@@ -25,6 +25,12 @@ class Goodbye extends React.Component {
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
+    <BrowserRouter>
+      <div>
+        <Route path="/hello" component={Hello} />
+        <Route path="/goodbye" component={Goodbye} />
+      </div>
+    </BrowserRouter>
+
   </Provider>
   , document.querySelector('.container'));
